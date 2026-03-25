@@ -18,8 +18,6 @@ After you enable Pages on this repo, the site will be available at:
 To refresh the topic list after adding `.md` files:
 
 ```bash
-python STM_Prep/Scripts/build_notes_site.py
+python build_index.py
 git add index.html && git commit -m "Regenerate site index" && git push
 ```
-
-(Run `build_notes_site.py` from your `ob2` project root, or copy the script path as needed.)
