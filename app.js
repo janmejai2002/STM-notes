@@ -12,6 +12,42 @@
   const content = document.getElementById('content');
   const status = document.getElementById('status');
 
+  /**
+   * Base URL for static assets (ends with /). Fixes GitHub Pages project URLs like
+   * /repo-name (no trailing slash), where ./Images/x.png would otherwise resolve to /Images/x.png.
+   */
+  function getStaticSiteBase() {
+    let path = window.location.pathname || '/';
+    if (path.endsWith('/')) {
+      return window.location.origin + path;
+    }
+    if (/\.html?$/i.test(path)) {
+      return window.location.origin + path.replace(/[^/]+$/, '');
+    }
+    return window.location.origin + path + '/';
+  }
+
+  function resolveAppUrl(relative) {
+    try {
+      return new URL(relative, getStaticSiteBase()).href;
+    } catch (e) {
+      return relative;
+    }
+  }
+
+  function rewriteRelativeMediaUrls(rootEl) {
+    const base = getStaticSiteBase();
+    rootEl.querySelectorAll('img[src], source[src]').forEach((el) => {
+      const src = el.getAttribute('src');
+      if (!src || /^[a-z][a-z0-9+.-]*:/i.test(src) || src.startsWith('//')) return;
+      try {
+        el.setAttribute('src', new URL(src, base).href);
+      } catch (e) {
+        /* ignore */
+      }
+    });
+  }
+
   function setTab(which) {
     const isNotes = which === 'notes';
     tabNotes.setAttribute('aria-selected', isNotes ? 'true' : 'false');
@@ -70,10 +106,11 @@
     status.classList.remove('error');
     content.hidden = true;
     try {
-      const res = await fetch(encodeURI(filename));
+      const res = await fetch(resolveAppUrl(filename));
       if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
       const md = await res.text();
       content.innerHTML = marked.parse(md, { mangle: false, headerIds: true });
+      rewriteRelativeMediaUrls(content);
       if (!content.querySelector('h1')) {
         const t = document.createElement('h1');
         t.textContent = humanTitle(filename);
@@ -193,7 +230,7 @@
   async function loadFlashcards() {
     fcStatus.textContent = 'Loading flashcards…';
     try {
-      const res = await fetch('./flashcards.json', { cache: 'no-store' });
+      const res = await fetch(resolveAppUrl('flashcards.json'), { cache: 'no-store' });
       if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
       allCards = await res.json();
       const topics = [...new Set(allCards.map((c) => c.topic))].sort((a, b) => a.localeCompare(b));
