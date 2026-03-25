@@ -1,0 +1,347 @@
+[
+  {
+    "topic": "Bounded Rationality",
+    "front": "What is Bounded Rationality in the context of strategic management?",
+    "back": "The concept that strategic decision-making is fundamentally constrained by human cognitive limitations, finite time, and imperfect information, departing from pure classical economic rationality."
+  },
+  {
+    "topic": "Bounded Rationality",
+    "front": "What are the three severe limitations executives operate under according to the theory of bounded rationality?",
+    "back": "1. Limited knowledge (imperfect information)\n2. Finite cognitive capacity\n3. Strict time constraints"
+  },
+  {
+    "topic": "Bounded Rationality",
+    "front": "How does classical economic theory's view of decision-making differ from bounded rationality?",
+    "back": "Classical economic theory assumes decision-makers evaluate all possible alternatives to maximize firm value, whereas bounded rationality recognizes that gathering and processing every piece of relevant data is physically and mentally impossible."
+  },
+  {
+    "topic": "Bounded Rationality",
+    "front": "What is \"satisficing behavior\"?",
+    "back": "A heuristic mechanism where decision-makers search through available alternatives only until they find an option that meets an acceptable threshold of performance, rather than exhaustively searching for the absolute optimal choice."
+  },
+  {
+    "topic": "Bounded Rationality",
+    "front": "What is the \"availability bias\" in strategy formulation?",
+    "back": "A cognitive bias where executives base their strategic judgments on information that is most easily recalled, emotionally resonant, or recently acquired, rather than objectively analyzing long-term structures."
+  },
+  {
+    "topic": "Bounded Rationality",
+    "front": "Why do decision-makers rely on heuristics (mental shortcuts) in strategic management?",
+    "back": "They are forced to use heuristics due to the limitations imposed by bounded rationality (finite time, limited cognition, and imperfect information) to balance the cost and delay of information gathering against the urgent need for action."
+  },
+  {
+    "topic": "Bounded Rationality",
+    "front": "How can organizations mitigate the negative implications of bounded rationality and availability bias?",
+    "back": "By implementing formal analytical frameworks (such as Porter's Five Forces, Value Chain Analysis, and structured Scenario Planning) to force a more comprehensive and objective evaluation of the internal and external environments."
+  },
+  {
+    "topic": "Dynamic Capabilities Definition",
+    "front": "How are 'Dynamic Capabilities' defined in the context of strategic management?",
+    "back": "A firm's ability to integrate, build, and reconfigure both internal and external competencies to maintain adaptability and responsiveness amid rapid environmental shifts."
+  },
+  {
+    "topic": "Dynamic Capabilities vs. RBV",
+    "front": "Why does the traditional Resource-Based View (RBV) of static VRIN resources often falter in high-velocity markets?",
+    "back": "In high-velocity markets, technological breakthroughs and disruptions make the duration of competitive advantage highly unpredictable. Hoarding a fixed set of assets becomes less effective than the capability to rapidly redeploy competencies."
+  },
+  {
+    "topic": "Mechanisms of Dynamic Capabilities",
+    "front": "What are the two primary avenues through which a firm modifies its resource base to exercise dynamic capabilities?",
+    "back": "1. Incremental deepening (aggressively improving existing resources, e.g., Toyota's hybrid tech). \n2. Radical augmentation (adding entirely new resources and capabilities, e.g., Cisco's acquisitions)."
+  },
+  {
+    "topic": "Real-World Application",
+    "front": "How did Apple Inc. utilize dynamic capabilities to overcome the saturation of the smartphone market?",
+    "back": "Apple reconfigured its technological base (transitioning to proprietary M-series chips) and augmented its portfolio by expanding into wearables, high-margin services, and augmented reality."
+  },
+  {
+    "topic": "Talent Orchestration",
+    "front": "To operationalize dynamic capabilities, firms must master the 'lifecycle of talent'. What are the five components of this lifecycle?",
+    "back": "1. Buy (acquire new talent)\n2. Build (develop existing talent)\n3. Borrow (access thought leaders via alliances)\n4. Bounce (remove poor performers)\n5. Bind (retain the best talent)"
+  },
+  {
+    "topic": "Organizational Structure & Innovation",
+    "front": "How must organizational structures evolve to support dynamic capabilities, particularly during technological transitions like the adoption of Artificial Intelligence?",
+    "back": "Functional lines must blur and traditional hierarchies must flatten into agile pods. The organization must foster a culture of rapid execution, continuous experimentation, and rely heavily on human adaptability and systems thinking."
+  },
+  {
+    "topic": "Emergent vs. Intended Strategy",
+    "front": "What is an \"Intended Strategy\"?",
+    "back": "A proactive, rational planning process where top management defines a firm's vision, allocates resources, and sets deliberate goals to achieve a competitive advantage."
+  },
+  {
+    "topic": "Emergent vs. Intended Strategy",
+    "front": "Why do many intended strategies become \"unrealized\"?",
+    "back": "They become unrealized due to bounded rationality, shifting macroeconomic conditions, and unpredictable competitor actions, which can turn an overly rigid plan into a core rigidity."
+  },
+  {
+    "topic": "Emergent vs. Intended Strategy",
+    "front": "Define \"Emergent Strategy\".",
+    "back": "A bottom-up strategy that arises spontaneously as an organization learns, adapts, and responds to unforeseen external forces or internal serendipity, operating outside the bounds of the original plan."
+  },
+  {
+    "topic": "Emergent vs. Intended Strategy",
+    "front": "What constitutes a firm's \"Realized Strategy\"?",
+    "back": "It is the hybrid culmination of deliberate (intended) strategies that were successfully executed and emergent strategies that were successfully integrated."
+  },
+  {
+    "topic": "Emergent vs. Intended Strategy",
+    "front": "How does Honda's entry into the US motorcycle market illustrate emergent strategy?",
+    "back": "Honda's intended strategy was to sell 250-350cc bikes to enthusiasts, which failed. Their emergent strategy arose spontaneously when executives ran errands on 50cc Honda Cubs, inadvertently unlocking a massive new market of non-bikers."
+  },
+  {
+    "topic": "Emergent vs. Intended Strategy",
+    "front": "How did Apple Inc. synthesize deliberate and emergent forces to create its realized strategy?",
+    "back": "Steve Jobs initially had a deliberate strategy for a strictly closed ecosystem. However, market realities and executive pushback forced an emergent adaptation (opening the iPod to Windows and launching the App Store), resulting in a massively successful hybrid realized strategy."
+  },
+  {
+    "topic": "Emergent vs. Intended Strategy",
+    "front": "Who conceptualized the framework of intended, emergent, and realized strategies?",
+    "back": "Henry Mintzberg."
+  },
+  {
+    "topic": "Emergent vs. Intended Strategy",
+    "front": "What is the key requirement of effective strategic leadership regarding deliberate and emergent strategies?",
+    "back": "Effective leaders must balance the discipline and alignment of intended frameworks with the organizational agility to absorb and integrate emergent opportunities."
+  },
+  {
+    "topic": "Generic Competitive Strategies",
+    "front": "What are the four main strategic positions in Porter\u2019s Generic Competitive Strategies framework?",
+    "back": "Broad Low-Cost Leadership, Differentiation, Focus (narrow niche), and Best-Cost (hybrid) strategy."
+  },
+  {
+    "topic": "Generic Competitive Strategies",
+    "front": "What are the two primary mechanisms a firm can use to achieve Low-Cost Leadership?",
+    "back": "1) Performing value chain activities more efficiently (e.g., capturing learning curve effects, maximizing economies of scale). 2) Completely reconfiguring the value chain to bypass cost-producing activities (e.g., cutting out distributors)."
+  },
+  {
+    "topic": "Generic Competitive Strategies",
+    "front": "How does a Differentiation Strategy protect a firm against competitive rivalry?",
+    "back": "By incorporating unique, hard-to-copy features (functional or intangible) that command a premium price, build fierce brand loyalty, create high switching costs, and reduce price sensitivity."
+  },
+  {
+    "topic": "Generic Competitive Strategies",
+    "front": "What distinguishes Focus Strategies from broad low-cost or differentiation strategies?",
+    "back": "Focus strategies concentrate on a narrow, specific segment (niche) of the total market, utilizing deep, localized expertise to serve buyers with distinct preferences better than broad-market rivals."
+  },
+  {
+    "topic": "Generic Competitive Strategies",
+    "front": "Who is the primary target audience for a Best Cost (Hybrid) Strategy?",
+    "back": "\"Value-conscious\" buyers who are looking for upscale, differentiated product attributes at a lower cost than rivals, rather than purely price-conscious buyers."
+  },
+  {
+    "topic": "Generic Competitive Strategies",
+    "front": "What is the strategic peril of \"straddling\" or trying to be \"all things to all customers\"?",
+    "back": "The firm risks getting \"stuck in the middle\"\u2014squeezed simultaneously by pure low-cost producers and high-end differentiators. This lack of strategic trade-offs leads to organizational confusion, a diluted value proposition, and collapsed margins."
+  },
+  {
+    "topic": "Generic Competitive Strategies",
+    "front": "In the Delta/Signal case, what was the \"Customer Integration\" approach an example of?",
+    "back": "A Focused Differentiation strategy. The firm intimately integrated processes with a select few luxury OEMs to secure highly profitable, premium-paying partnerships and insulate itself from broad market fluctuations."
+  },
+  {
+    "topic": "Operational Effectiveness vs. Strategy",
+    "front": "What is the fundamental difference between Operational Effectiveness (OE) and Strategy?",
+    "back": "OE means performing similar activities *better* than rivals (focusing on efficiency and best practices), whereas Strategy means choosing to be *different* by performing a unique, tailored set of activities."
+  },
+  {
+    "topic": "Operational Effectiveness vs. Strategy",
+    "front": "Why is relying solely on Operational Effectiveness insufficient for sustaining a competitive advantage?",
+    "back": "Because OE initiatives are easily observable and rapidly copied by competitors. This rapid diffusion pushes the 'productivity frontier' outward, preventing any single firm from maintaining a long-term advantage based purely on execution."
+  },
+  {
+    "topic": "Operational Effectiveness vs. Strategy",
+    "front": "What is 'Strategic Convergence'?",
+    "back": "A phenomenon where continuous benchmarking and copying of operational best practices make competitors indistinguishable from one another. This lack of differentiation ultimately leads to price wars and margin collapse."
+  },
+  {
+    "topic": "Operational Effectiveness vs. Strategy",
+    "front": "What are Michael E. Porter's three distinct bases for Strategic Positioning?",
+    "back": "1) Variety-based positioning (focusing deeply on a narrow product/service set), 2) Needs-based positioning (tailoring operations to serve specific targeted customer segments), and 3) Access-based positioning (segmenting customers based on unique geographic or scale-based access)."
+  },
+  {
+    "topic": "Operational Effectiveness vs. Strategy",
+    "front": "Why are 'Trade-offs' considered an absolute necessity in strategy?",
+    "back": "Trade-offs fundamentally require a firm to choose what *not* to do. They protect a firm's strategic position by making it difficult for competitors to imitate without abandoning or damaging their own established positions and brand equity."
+  },
+  {
+    "topic": "Operational Effectiveness vs. Strategy",
+    "front": "What is the strategic trap known as 'Straddling'?",
+    "back": "Straddling occurs when a firm attempts to graft a rival's new competitive position onto its own existing operational model without making trade-offs. This results in organizational confusion, conflicting priorities, higher costs, and eventual market failure."
+  },
+  {
+    "topic": "PESTLE Analysis and Scenario Planning",
+    "front": "What is the primary purpose of PESTLE Analysis, and what do its letters stand for?",
+    "back": "It is a diagnostic framework used to categorize macro-environmental forces\u2014Political, Economic, Social, Technological, Legal, and Environmental\u2014that alter demand, cost structures, and competitive dynamics."
+  },
+  {
+    "topic": "PESTLE Analysis and Scenario Planning",
+    "front": "What is the core mechanism of Scenario Planning?",
+    "back": "It isolates two high-impact, high-uncertainty variables to construct a matrix of plausible future states, allowing firms to develop distinct strategic narratives rather than relying on a single static forecast."
+  },
+  {
+    "topic": "PESTLE Analysis and Scenario Planning",
+    "front": "What strategic pitfall does Scenario Planning help organizations avoid?",
+    "back": "It prevents strategic \"straddling\" by outlining clear, actionable contingency plans, enabling firms to rapidly pivot investments as new realities emerge."
+  },
+  {
+    "topic": "PESTLE Analysis and Scenario Planning",
+    "front": "How do social shifts impact corporate strategy, as illustrated by the \"Cola Wars\" in the text?",
+    "back": "Social shifts, such as health-conscious consumers moving away from carbonated drinks toward wellness beverages, dictate consumer willingness to pay and force companies to radically alter their product portfolios."
+  },
+  {
+    "topic": "PESTLE Analysis and Scenario Planning",
+    "front": "How do external macro-environmental shifts dictate a firm's internal strategic fit?",
+    "back": "They invariably necessitate a reconfiguration of the firm's value chain, resource allocation, and organizational structure (such as flattening hierarchies into agile pods) to properly support its VRIO resources."
+  },
+  {
+    "topic": "PESTLE Analysis and Scenario Planning",
+    "front": "How can firms strategically respond to adverse Environmental macro-forces that threaten supply chain stability?",
+    "back": "Firms can pursue aggressive vertical integration (e.g., acquiring key suppliers) to secure critical raw material inputs and defend their core competencies against climate change and commodity price volatility."
+  },
+  {
+    "topic": "Porter's Five Forces",
+    "front": "What are the specific components that make up Porter's Five Forces framework?",
+    "back": "1. Competitive Rivalry\n2. Threat of New Entrants\n3. Bargaining Power of Suppliers\n4. Bargaining Power of Buyers\n5. Threat of Substitutes"
+  },
+  {
+    "topic": "Porter's Five Forces",
+    "front": "What key factors dictate the intensity of inter-firm Rivalry (Internal Dynamics)?",
+    "back": "Industry concentration, market growth rates, exit barriers, and the ratio of fixed to variable costs. Rivalry often leads to destructive price competition if products lack differentiation or market growth stagnates."
+  },
+  {
+    "topic": "Porter's Five Forces",
+    "front": "What determines the Threat of New Entrants into an industry?",
+    "back": "The height of entry barriers (such as economies of scale, capital requirements, learning curve effects, and patents) and the expected retaliation from existing incumbents."
+  },
+  {
+    "topic": "Porter's Five Forces",
+    "front": "Under what conditions is the Bargaining Power of Suppliers considered high?",
+    "back": "Supplier power is high when necessary inputs are rare, the suppliers are highly concentrated, or the buying firm faces steep switching costs."
+  },
+  {
+    "topic": "Porter's Five Forces",
+    "front": "What market conditions cause the Bargaining Power of Buyers to escalate?",
+    "back": "Buyer power escalates when customers purchase in massive volumes, face low switching costs, or buy undifferentiated, standard supplies."
+  },
+  {
+    "topic": "Porter's Five Forces",
+    "front": "How does the Threat of Substitutes impact an industry, and when is it most severe?",
+    "back": "Substitutes place a hard ceiling on an industry's pricing power. The threat is severe when alternatives fulfilling the same core need are readily available, attractively priced, or offer a superior performance-to-price ratio with minimal buyer switching costs."
+  },
+  {
+    "topic": "Porter's Five Forces",
+    "front": "How can managers strategically mitigate vertical threats from powerful buyers and suppliers?",
+    "back": "By designing mechanisms that lock in customers (raising buyer switching costs) and by neutralizing supplier dominance through backward integration and supply chain diversification."
+  },
+  {
+    "topic": "Resource-Based View (RBV) and VRIN Framework",
+    "front": "What are the two foundational assumptions of the Resource-Based View (RBV)?",
+    "back": "1. Resource heterogeneity (firms possess different bundles of resources)\n2. Resource immobility (these resources cannot easily move between firms, allowing differences to persist)."
+  },
+  {
+    "topic": "Resource-Based View (RBV) and VRIN Framework",
+    "front": "How does the Resource-Based View (RBV) define a \"Core Competence\"?",
+    "back": "A core competence is a distinctive, central proficiency that evolves from a firm's critical organizational capabilities, driving its long-term competitiveness and profitability."
+  },
+  {
+    "topic": "Resource-Based View (RBV) and VRIN Framework",
+    "front": "What does the VRIN framework stand for?",
+    "back": "Valuable, Rare, Inimitable, and Non-substitutable. It is a framework used to assess whether a firm's resources and capabilities will yield a sustainable competitive advantage."
+  },
+  {
+    "topic": "Resource-Based View (RBV) and VRIN Framework",
+    "front": "What is the role of \"isolating mechanisms\" in the VRIN framework?",
+    "back": "Isolating mechanisms protect a firm's inimitability by making it difficult or costly for competitors to copy their success. Examples include path dependency, causal ambiguity, physical uniqueness, and scale deterrence."
+  },
+  {
+    "topic": "Resource-Based View (RBV) and VRIN Framework",
+    "front": "Define \"causal ambiguity\" as an isolating mechanism.",
+    "back": "Causal ambiguity occurs when competitors cannot decipher the exact recipe or underlying causes of a firm's success (such as its unique culture), making the resource exceptionally difficult to imitate."
+  },
+  {
+    "topic": "Resource-Based View (RBV) and VRIN Framework",
+    "front": "What is the \"Resource Continuum\" and how does it affect a firm's business scope?",
+    "back": "The Resource Continuum represents the range of a firm's resources from highly specialized to highly general. Highly specialized resources restrict a firm's scope to closely related businesses, whereas highly general resources allow a firm to manage a wide, unrelated portfolio."
+  },
+  {
+    "topic": "Resource-Based View (RBV) and VRIN Framework",
+    "front": "Why are \"dynamic capabilities\" essential for sustaining a competitive advantage?",
+    "back": "Firms must employ dynamic capabilities to continually upgrade and redefine their VRIN resources, allowing them to defend against imitation, substitution, environmental turbulence, and industry maturity."
+  },
+  {
+    "topic": "Strategic Groups and Mobility Barriers",
+    "front": "What is a Strategic Group?",
+    "back": "A cluster of firms within an industry that share similar competitive approaches, characteristics, and market positions (e.g., similar price/quality ranges, geographic coverage, or distribution channels)."
+  },
+  {
+    "topic": "Strategic Groups and Mobility Barriers",
+    "front": "What are the four key steps involved in Strategic Group Mapping?",
+    "back": "1) Identify differentiating competitive characteristics. 2) Plot firms on a two-variable map. 3) Assign them to a shared strategy space. 4) Draw circles proportional to the group's share of total industry sales."
+  },
+  {
+    "topic": "Strategic Groups and Mobility Barriers",
+    "front": "How does the distance between strategic groups on a map affect competition?",
+    "back": "The closer different strategic groups are to one another on the map, the stronger the competitive rivalry between their members."
+  },
+  {
+    "topic": "Strategic Groups and Mobility Barriers",
+    "front": "Why do members of the same strategic group experience a similar impact from industry driving forces and the Five Forces?",
+    "back": "Because they share an identical strategic profile\u2014they act as direct competitors relying on identical technological approaches, offering similar services, and targeting identical buyer segments."
+  },
+  {
+    "topic": "Strategic Groups and Mobility Barriers",
+    "front": "What are Mobility Barriers?",
+    "back": "Structural rigidities that heavily restrict a firm's movement from one strategic group to another. They function exactly like industry entry and exit barriers, but exist *between* strategic groups within the same industry."
+  },
+  {
+    "topic": "Strategic Groups and Mobility Barriers",
+    "front": "What is required for a company to successfully overcome Mobility Barriers?",
+    "back": "Overcoming these barriers requires significant resource reallocation, structural changes, and shifts in brand perception."
+  },
+  {
+    "topic": "Strategic Groups and Mobility Barriers",
+    "front": "What is the primary strategic benefit of identifying mobility barriers and mapping strategic groups?",
+    "back": "It prevents ill-advised market repositioning and enables firms to evaluate their relative market positioning, vulnerability to external forces, and deliberately target uncontested \"strategic spaces\" for a sustainable competitive advantage."
+  },
+  {
+    "topic": "Value Chain Analysis",
+    "front": "What is the primary purpose of Value Chain Analysis?",
+    "back": "To systematically disaggregate a firm's strategic activities to identify the root sources of competitive advantage and maximize profit margins."
+  },
+  {
+    "topic": "Value Chain Analysis",
+    "front": "What are the five Primary Activities in a firm's value chain?",
+    "back": "1. Inbound Logistics\n2. Operations\n3. Outbound Logistics\n4. Marketing & Sales\n5. Service"
+  },
+  {
+    "topic": "Value Chain Analysis",
+    "front": "What are the four Support Activities in a firm's value chain?",
+    "back": "1. Procurement\n2. Technology Development\n3. Human Resource Management (HRM)\n4. Firm Infrastructure"
+  },
+  {
+    "topic": "Value Chain Analysis",
+    "front": "In the context of Value Chain Analysis, how is a firm's 'margin' defined?",
+    "back": "It is the difference between the total value (what customers are willing to pay) and the collective cost of performing all primary and support activities."
+  },
+  {
+    "topic": "Value Chain Analysis",
+    "front": "What are value chain 'linkages'?",
+    "back": "Interdependencies where the execution of one activity affects the cost or effectiveness of another. They can be internal (between a firm's own activities) or external (connecting to the value chains of suppliers and buyers)."
+  },
+  {
+    "topic": "Value Chain Analysis",
+    "front": "What does the 'smile of value creation' illustrate regarding industry margins?",
+    "back": "It illustrates that standard manufacturing often yields the lowest margins, while upstream activities (R&D, design) and downstream activities (marketing, after-sales services) capture the highest value."
+  },
+  {
+    "topic": "Value Chain Analysis",
+    "front": "What is Value Chain Reconfiguration?",
+    "back": "The strategic process of modifying, outsourcing, or eliminating certain activities\u2014often following industry benchmarking\u2014to bypass cost-producing steps that add little customer value."
+  },
+  {
+    "topic": "Value Chain Analysis",
+    "front": "How does deep backward integration and sustainability impact a modern value chain?",
+    "back": "It mitigates risk against supply shocks and price volatility, secures raw material traceability, and serves as a powerful front-end marketing differentiator to command premium pricing."
+  }
+]

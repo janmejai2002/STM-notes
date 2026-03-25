@@ -2,82 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>STM Study Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1a2332" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="description" content="Strategic Management study notes and flashcards." />
+  <title>STM Study Hub · Notes &amp; Flashcards</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <div class="layout">
-    <aside class="sidebar">
-      <h1>STM study notes</h1>
-      <p class="sub">Strategic Management · topic pages</p>
-      <nav id="nav"></nav>
-    </aside>
-    <main>
-      <div id="status" class="status">Select a topic from the list.</div>
-      <article id="content" class="prose" hidden></article>
-    </main>
-  </div>
+  <header class="site-header">
+    <h1 class="brand">
+      STM Study Hub
+      <span class="brand-sub">Strategic Management · notes &amp; flashcards</span>
+    </h1>
+    <div class="tabs" role="tablist" aria-label="Study mode">
+      <button type="button" class="tab" role="tab" id="tab-notes" aria-controls="panel-notes" aria-selected="true">Notes</button>
+      <button type="button" class="tab" role="tab" id="tab-cards" aria-controls="panel-cards" aria-selected="false">Flashcards</button>
+    </div>
+  </header>
+
+  <section id="panel-notes" class="panel" role="tabpanel" aria-labelledby="tab-notes">
+    <div class="layout">
+      <aside class="sidebar">
+        <label class="sr-only" for="note-filter">Filter topics</label>
+        <input type="search" id="note-filter" class="note-filter" placeholder="Filter topics…" autocomplete="off" enterkeyhint="search" />
+        <nav id="nav" class="topic-nav" aria-label="Topics"></nav>
+      </aside>
+      <main class="main-content">
+        <div id="status" class="status">Select a topic or filter the list.</div>
+        <article id="content" class="prose" hidden></article>
+      </main>
+    </div>
+  </section>
+
+  <section id="panel-cards" class="panel hidden" role="tabpanel" aria-labelledby="tab-cards" hidden>
+    <div class="flashcards-app">
+      <div class="fc-toolbar">
+        <label>Topic
+          <select id="fc-topic" aria-label="Filter flashcards by topic"></select>
+        </label>
+        <button type="button" id="fc-shuffle">Shuffle deck</button>
+      </div>
+      <p class="fc-progress" id="fc-progress" aria-live="polite"></p>
+      <span class="fc-hint" id="fc-hint">Tap card to flip</span>
+      <div class="fc-scene">
+        <button type="button" class="fc-flip-wrap" id="fc-flip" aria-label="Flip flashcard">
+          <div class="fc-inner" id="fc-inner">
+            <div class="fc-face fc-front" id="fc-front"></div>
+            <div class="fc-face fc-back" id="fc-back"></div>
+          </div>
+        </button>
+      </div>
+      <div class="fc-nav-btns">
+        <button type="button" id="fc-prev">Previous</button>
+        <button type="button" id="fc-next">Next</button>
+      </div>
+      <p id="fc-status" class="status" role="status"></p>
+    </div>
+  </section>
+
+  <script>window.__NOTES__ = [{"file": "AI_Talent_Horizon_Framework.md", "title": "AI Talent Horizon Framework"}, {"file": "Apple_Inc._Case.md", "title": "Apple Inc. Case"}, {"file": "Blue_Ocean_Strategy.md", "title": "Blue Ocean Strategy"}, {"file": "Bounded_Rationality.md", "title": "Bounded Rationality"}, {"file": "Cafe_Coffee_Day_vs._Starbucks_Case.md", "title": "Cafe Coffee Day vs. Starbucks Case"}, {"file": "Cola_Wars_Coca-Cola_vs._Pepsi_Case.md", "title": "Cola Wars Coca-Cola vs. Pepsi Case"}, {"file": "Competitive_Maneuvers_and_Tactics.md", "title": "Competitive Maneuvers and Tactics"}, {"file": "Corporate_Advantage_and_Resource_Continuum.md", "title": "Corporate Advantage and Resource Continuum"}, {"file": "Dynamic_Capabilities.md", "title": "Dynamic Capabilities"}, {"file": "Emergent_vs._Intended_Strategy.md", "title": "Emergent vs. Intended Strategy"}, {"file": "Generic_Competitive_Strategies.md", "title": "Generic Competitive Strategies"}, {"file": "Nestle_SA_Nutrition,_Health_and_Wellness_Case.md", "title": "Nestle SA Nutrition, Health and Wellness Case"}, {"file": "Operational_Effectiveness_vs._Strategy.md", "title": "Operational Effectiveness vs. Strategy"}, {"file": "Organizational_Design_and_Structure.md", "title": "Organizational Design and Structure"}, {"file": "PESTLE_Analysis_and_Scenario_Planning.md", "title": "PESTLE Analysis and Scenario Planning"}, {"file": "Porter's_Five_Forces.md", "title": "Porter's Five Forces"}, {"file": "Resource-Based_View_(RBV)_and_VRIN_Framework.md", "title": "Resource-Based View (RBV) and VRIN Framework"}, {"file": "Strategic_Groups_and_Mobility_Barriers.md", "title": "Strategic Groups and Mobility Barriers"}, {"file": "Tanishq_and_GoldPlus_Case.md", "title": "Tanishq and GoldPlus Case"}, {"file": "The_Balanced_Scorecard_and_Strategy_Maps.md", "title": "The Balanced Scorecard and Strategy Maps"}, {"file": "Value_Chain_Analysis.md", "title": "Value Chain Analysis"}, {"file": "Vertical_and_Horizontal_Integration.md", "title": "Vertical and Horizontal Integration"}];</script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script>
-    const NOTES = [{"file": "AI_Talent_Horizon_Framework.md", "title": "AI Talent Horizon Framework"}, {"file": "Apple_Inc._Case.md", "title": "Apple Inc. Case"}, {"file": "Blue_Ocean_Strategy.md", "title": "Blue Ocean Strategy"}, {"file": "Bounded_Rationality.md", "title": "Bounded Rationality"}, {"file": "Cafe_Coffee_Day_vs._Starbucks_Case.md", "title": "Cafe Coffee Day vs. Starbucks Case"}, {"file": "Cola_Wars_Coca-Cola_vs._Pepsi_Case.md", "title": "Cola Wars Coca-Cola vs. Pepsi Case"}, {"file": "Competitive_Maneuvers_and_Tactics.md", "title": "Competitive Maneuvers and Tactics"}, {"file": "Corporate_Advantage_and_Resource_Continuum.md", "title": "Corporate Advantage and Resource Continuum"}, {"file": "Dynamic_Capabilities.md", "title": "Dynamic Capabilities"}, {"file": "Emergent_vs._Intended_Strategy.md", "title": "Emergent vs. Intended Strategy"}, {"file": "Generic_Competitive_Strategies.md", "title": "Generic Competitive Strategies"}, {"file": "Nestle_SA_Nutrition,_Health_and_Wellness_Case.md", "title": "Nestle SA Nutrition, Health and Wellness Case"}, {"file": "Operational_Effectiveness_vs._Strategy.md", "title": "Operational Effectiveness vs. Strategy"}, {"file": "Organizational_Design_and_Structure.md", "title": "Organizational Design and Structure"}, {"file": "PESTLE_Analysis_and_Scenario_Planning.md", "title": "PESTLE Analysis and Scenario Planning"}, {"file": "Porter's_Five_Forces.md", "title": "Porter's Five Forces"}, {"file": "Resource-Based_View_(RBV)_and_VRIN_Framework.md", "title": "Resource-Based View (RBV) and VRIN Framework"}, {"file": "Strategic_Groups_and_Mobility_Barriers.md", "title": "Strategic Groups and Mobility Barriers"}, {"file": "Tanishq_and_GoldPlus_Case.md", "title": "Tanishq and GoldPlus Case"}, {"file": "The_Balanced_Scorecard_and_Strategy_Maps.md", "title": "The Balanced Scorecard and Strategy Maps"}, {"file": "Value_Chain_Analysis.md", "title": "Value Chain Analysis"}, {"file": "Vertical_and_Horizontal_Integration.md", "title": "Vertical and Horizontal Integration"}];
-
-    const nav = document.getElementById('nav');
-    const content = document.getElementById('content');
-    const status = document.getElementById('status');
-
-    function humanTitle(file) {
-      const base = file.replace(/\.md$/i, '');
-      return base.replace(/_/g, ' ');
-    }
-
-    NOTES.sort((a, b) => a.title.localeCompare(b.title));
-
-    NOTES.forEach((note, i) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.textContent = note.title;
-      btn.dataset.file = note.file;
-      btn.addEventListener('click', () => loadNote(note.file, btn));
-      nav.appendChild(btn);
-    });
-
-    async function loadNote(filename, btn) {
-      document.querySelectorAll('.sidebar button').forEach((b) => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-      status.textContent = 'Loading…';
-      status.classList.remove('error');
-      content.hidden = true;
-      try {
-        const url = encodeURI(filename);
-        const res = await fetch(url);
-        if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
-        const md = await res.text();
-        content.innerHTML = marked.parse(md, { mangle: false, headerIds: true });
-        const h1 = content.querySelector('h1');
-        if (!h1) {
-          const t = document.createElement('h1');
-          t.textContent = humanTitle(filename);
-          content.insertBefore(t, content.firstChild);
-        }
-        status.textContent = '';
-        content.hidden = false;
-      } catch (e) {
-        status.textContent = 'Could not load this file. If you opened index.html from disk, use GitHub Pages instead.';
-        status.classList.add('error');
-        console.error(e);
-      }
-    }
-
-    const params = new URLSearchParams(location.search);
-    const q = params.get('note');
-    if (q) {
-      const btn = [...nav.querySelectorAll('button')].find((b) => b.dataset.file === q);
-      loadNote(q, btn || null);
-    }
-  </script>
+  <script src="./app.js"></script>
 </body>
 </html>

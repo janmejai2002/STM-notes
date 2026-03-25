@@ -1,23 +1,32 @@
-# STM study notes
+# STM Study Hub (static site)
 
-Generated topic notes (Markdown) for Strategic Management, with mnemonic images under `Images/`.
+This repo powers a **mobile-friendly** static site: **topic notes** (Markdown + images) plus **flashcards** (JSON).
 
-Markdown image paths use `./Images/<topic>_mnemonic.png`.
+**Live site (after GitHub Pages is enabled):** [https://janmejai2002.github.io/STM-notes/](https://janmejai2002.github.io/STM-notes/)
 
-## Website (GitHub Pages)
+## Features
 
-After you enable Pages on this repo, the site will be available at:
+- **Notes** tab: filter box for long topic lists, large tap targets, readable typography on small screens, `viewport-fit` / safe-area aware header.
+- **Flashcards** tab: load `flashcards.json`, filter by topic, tap card to flip, previous/next, shuffle deck.
+- **URLs:** `?note=Some_File.md` opens a note; `?view=flashcards` opens flashcards (other query params preserved).
 
-**https://janmejai2002.github.io/STM-notes/**
+## Content
 
-1. On GitHub: **Settings → Pages → Build and deployment**
-2. **Source:** Deploy from a branch  
-3. **Branch:** `main` / **Folder:** `/ (root)`  
-4. Save. Wait 1–2 minutes, then open the link above.
+- Markdown notes: `*.md` (except `README.md`)
+- Mnemonic images: `Images/`
+- Flashcards: `flashcards.json` (regenerated from `STM_Prep/Flashcards/` when you run the build below)
 
-To refresh the topic list after adding `.md` files:
+## Regenerate site + flashcards
+
+From this folder (with the full `ob2` tree so `../Flashcards/flashcards.json` exists):
 
 ```bash
 python build_index.py
-git add index.html && git commit -m "Regenerate site index" && git push
+git add index.html flashcards.json
+git commit -m "Regenerate site and flashcards"
+git push
 ```
+
+## GitHub Pages
+
+**Settings → Pages:** Branch `main`, folder `/ (root)`.
