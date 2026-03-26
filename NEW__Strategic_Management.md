@@ -1,0 +1,63 @@
+# [NEW] Strategic Management
+
+![Mnemonic Diagram](./Images/NEW__Strategic_Management_mnemonic.png)
+
+> *Auto-extracted from your `NewContent/` uploads. Re-run **`python create_new_content_notes.py`** (without `--extract-only`) when Gemini quota is available for full exam-style notes.*
+
+## Extracted source text
+
+```text
+--- Page 1 ---
+
+--- Page 2 ---
+
+--- Page 3 ---
+
+--- Page 4 ---
+
+--- Page 5 ---
+
+--- Page 6 ---
+
+--- Page 7 ---
+
+--- Page 8 ---
+
+--- Page 9 ---
+
+--- Page 10 ---
+
+--- Page 11 ---
+
+--- Page 12 ---
+
+--- Page 13 ---
+
+--- Page 14 ---
+
+--- Page 15 ---
+
+--- Page 16 ---
+
+--- Page 17 ---
+
+--- Page 18 ---
+
+--- Page 19 ---
+
+--- Page 20 ---
+
+--- Page 21 ---
+
+--- Page 22 ---
+
+--- Page 23 ---
+
+--- Page 24 ---
+
+--- Page 25 ---
+
+--- Page 26 ---
+
+---
+```

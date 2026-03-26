@@ -146,12 +146,19 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 """
 
 
+def note_title(p: Path) -> str:
+    stem = p.stem
+    if stem.startswith("NEW__"):
+        return "[NEW] " + stem[5:].replace("_", " ")
+    return stem.replace("_", " ")
+
+
 def main() -> None:
     notes: list[dict] = []
     for p in sorted(HERE.glob("*.md")):
         if p.name.lower() == "readme.md":
             continue
-        notes.append({"file": p.name, "title": p.stem.replace("_", " ")})
+        notes.append({"file": p.name, "title": note_title(p)})
 
     html = HTML_TEMPLATE.replace("__NOTES_JSON__", json.dumps(notes, ensure_ascii=False))
     INDEX_OUT.write_text(html, encoding="utf-8")
