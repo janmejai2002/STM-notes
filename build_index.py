@@ -15,25 +15,46 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#1a2332" />
-  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" id="theme-color-meta" content="#12161f" />
+  <meta name="color-scheme" content="dark light" />
   <meta name="description" content="Strategic Management study notes and flashcards." />
   <title>STM Study Hub · Notes &amp; Flashcards</title>
+  <script>
+(function(){
+  try {
+    var k='stm-hub-theme';
+    var t=localStorage.getItem(k);
+    if(!t) t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
+    document.documentElement.setAttribute('data-theme',t);
+    var meta=document.getElementById('theme-color-meta');
+    if(meta) meta.content=t==='light'?'#f0f2f6':'#12161f';
+  } catch(e) {}
+})();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
   <header class="site-header">
-    <h1 class="brand">
-      STM Study Hub
-      <span class="brand-sub">Strategic Management · notes &amp; flashcards</span>
-    </h1>
+    <div class="header-top">
+      <h1 class="brand">
+        STM Study Hub
+        <span class="brand-sub">Strategic Management · notes &amp; flashcards</span>
+      </h1>
+      <button type="button" class="theme-toggle" id="theme-toggle" title="Toggle light / dark theme" aria-label="Toggle light and dark theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </div>
     <div class="tabs" role="tablist" aria-label="Study mode">
       <button type="button" class="tab" role="tab" id="tab-notes" aria-controls="panel-notes" aria-selected="true">Notes</button>
       <button type="button" class="tab" role="tab" id="tab-cards" aria-controls="panel-cards" aria-selected="false">Flashcards</button>
     </div>
+    <nav class="header-nav" aria-label="Pages">
+      <a href="./highlights.html" class="header-nav-link">My highlights</a>
+    </nav>
   </header>
 
   <section id="panel-notes" class="panel" role="tabpanel" aria-labelledby="tab-notes">
@@ -78,6 +99,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
   <script>window.__NOTES__ = __NOTES_JSON__;</script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="./highlights.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>

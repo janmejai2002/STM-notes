@@ -56,6 +56,10 @@
     panelCards.classList.toggle('hidden', isNotes);
     panelNotes.hidden = !isNotes;
     panelCards.hidden = isNotes;
+    if (window.STMHighlights) {
+      if (isNotes) window.STMHighlights.resumeNotesTab();
+      else window.STMHighlights.pauseForFlashcards();
+    }
     try {
       const p = new URLSearchParams(location.search);
       if (isNotes) {
@@ -100,6 +104,7 @@
   }
 
   async function loadNote(filename, btn) {
+    if (window.STMHighlights) window.STMHighlights.onNoteClosed();
     nav.querySelectorAll('button').forEach((b) => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
     status.textContent = 'Loading…';
@@ -118,11 +123,13 @@
       }
       status.textContent = '';
       content.hidden = false;
+      if (window.STMHighlights) window.STMHighlights.afterNoteLoad(content, filename);
       content.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (e) {
       status.textContent = 'Could not load this file. Use the GitHub Pages URL (not file://).';
       status.classList.add('error');
       console.error(e);
+      if (window.STMHighlights) window.STMHighlights.onNoteClosed();
     }
   }
 
