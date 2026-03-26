@@ -4,6 +4,8 @@
   var MODEL_FALLBACK = 'gemini-2.5-pro-preview-tts';
   var SAMPLE_RATE = 24000;
   var CHUNK_MAX = 3400;
+  var INTER_CHUNK_MS = 1200;
+  var RETRY_MAX = 6;
 
   var abortCtrl = null;
   var activeSources = [];
@@ -71,6 +73,18 @@
     });
   }
 
+  function delay(ms) {
+    return new Promise(function (resolve) {
+      setTimeout(resolve, ms);
+    });
+  }
+
+  function isRateLimitedError(res, data, errMsg) {
+    if (res && res.status === 429) return true;
+    var m = (data && data.error && data.error.message) || errMsg || '';
+    return /resource has been exhausted|resource_exhausted|too many requests|429|quota/i.test(String(m));
+  }
+
   function chunkText(text) {
     var t = String(text)
       .replace(/\s+/g, ' ')
@@ -118,6 +132,7 @@
           var msg = (data.error && data.error.message) || res.statusText || 'Request failed';
           var err = new Error(msg);
           err.status = res.status;
+          err.details = data;
           throw err;
         }
         var b64 =
@@ -131,6 +146,26 @@
         if (!b64)
           throw new Error('No audio in response. Check that TTS is enabled for your API key (see AI Studio).');
         return b64;
+      });
+    });
+  }
+
+  function synthesizeOneWithRetry(apiKey, model, voiceName, text, signal, attempt) {
+    attempt = attempt || 1;
+    return synthesizeOne(apiKey, model, voiceName, text, signal).catch(function (err) {
+      if (signal && signal.aborted) throw err;
+      var resLike = { status: err.status };
+      var limited = err.status === 429 || isRateLimitedError(resLike, err.details, err.message);
+      if (!limited || attempt >= RETRY_MAX) {
+        if (limited) {
+          err.message =
+            'Rate limit (429). Wait a few minutes, try again, or use Browser read-aloud. ' + (err.message || '');
+        }
+        throw err;
+      }
+      var backoff = Math.min(60000, 2500 * Math.pow(2, attempt - 1) + Math.floor(Math.random() * 800));
+      return delay(backoff).then(function () {
+        return synthesizeOneWithRetry(apiKey, model, voiceName, text, signal, attempt + 1);
       });
     });
   }
@@ -162,7 +197,10 @@
           chain = chain.then(function () {
             if (signal.aborted) return;
             if (onProgress) onProgress(idx + 1, chunks.length);
-            return synthesizeOne(apiKey, model, voiceName, chunks[idx], signal).then(function (b64) {
+            if (idx > 0 && INTER_CHUNK_MS > 0) return delay(INTER_CHUNK_MS);
+          }).then(function () {
+            if (signal.aborted) return;
+            return synthesizeOneWithRetry(apiKey, model, voiceName, chunks[idx], signal).then(function (b64) {
               if (signal.aborted) return;
               var buffer = decodePcmBase64ToBuffer(audioCtx, b64);
               return playBuffer(audioCtx, buffer);
