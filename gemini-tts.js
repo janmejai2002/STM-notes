@@ -3,9 +3,12 @@
   var MODEL_PRIMARY = 'gemini-2.5-flash-preview-tts';
   var MODEL_FALLBACK = 'gemini-2.5-pro-preview-tts';
   var SAMPLE_RATE = 24000;
-  var CHUNK_MAX = 3400;
-  var INTER_CHUNK_MS = 1200;
-  var RETRY_MAX = 6;
+  /** One chunk ≈ one API call. Gemini TTS allows a large context (~32k tokens); ~20k chars keeps typical notes in a single request. */
+  var CHUNK_MAX = 20000;
+  /** Tiny gap only when a very long note needs multiple requests (avoid bursty back-to-back calls). */
+  var INTER_CHUNK_MS = 250;
+  /** On 429, retry sparingly with long waits—do not hammer the API. */
+  var RETRY_MAX = 3;
 
   var abortCtrl = null;
   var activeSources = [];
@@ -33,8 +36,7 @@
 
   function wrapChunk(text) {
     return (
-      'Read the following study note excerpt verbatim, in an enthusiastic, warm teaching voice—like an engaging professor who loves the subject. ' +
-      'Keep good pacing and clarity. Do not summarize, do not add intros or filler—only speak the content below naturally (headings become spoken phrases):\n\n' +
+      'Read verbatim in a warm, enthusiastic teaching voice. No summary or filler—only the content below (headings as spoken phrases):\n\n' +
       String(text).trim()
     );
   }
@@ -159,11 +161,11 @@
       if (!limited || attempt >= RETRY_MAX) {
         if (limited) {
           err.message =
-            'Rate limit (429). Wait a few minutes, try again, or use Browser read-aloud. ' + (err.message || '');
+            'Rate limited—wait several minutes, use Browser read-aloud, or try when quota resets. ' + (err.message || '');
         }
         throw err;
       }
-      var backoff = Math.min(60000, 2500 * Math.pow(2, attempt - 1) + Math.floor(Math.random() * 800));
+      var backoff = Math.min(120000, 12000 * Math.pow(2, attempt - 1) + Math.floor(Math.random() * 2000));
       return delay(backoff).then(function () {
         return synthesizeOneWithRetry(apiKey, model, voiceName, text, signal, attempt + 1);
       });

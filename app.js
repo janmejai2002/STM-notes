@@ -214,7 +214,7 @@
     setSpeakingUi(true);
     if (status) {
       status.classList.remove('error');
-      status.textContent = 'Preparing Gemini audio…';
+      status.textContent = 'Preparing read-aloud (one request for most notes)…';
     }
 
     const voice = (ttsVoice && ttsVoice.value) || 'Kore';
@@ -225,7 +225,9 @@
         apiKey: key,
         voiceName: voice,
         onProgress: (n, tot) => {
-          if (status) status.textContent = 'Playing Gemini audio (' + n + '/' + tot + ')…';
+          if (!status) return;
+          if (tot <= 1) status.textContent = 'Generating audio…';
+          else status.textContent = 'Long note: part ' + n + '/' + tot + ' (short pause between parts)…';
         }
       });
     } catch (e) {
