@@ -305,10 +305,6 @@
     panelCards.classList.toggle('hidden', isNotes);
     panelNotes.hidden = !isNotes;
     panelCards.hidden = isNotes;
-    if (window.STMHighlights) {
-      if (isNotes) window.STMHighlights.resumeNotesTab();
-      else window.STMHighlights.pauseForFlashcards();
-    }
     if (!isNotes) stopSpeak();
     try {
       const p = new URLSearchParams(location.search);
@@ -355,7 +351,6 @@
 
   async function loadNote(filename, btn) {
     stopSpeak();
-    if (window.STMHighlights) window.STMHighlights.onNoteClosed();
     nav.querySelectorAll('button').forEach((b) => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
     status.textContent = 'Loading…';
@@ -376,14 +371,12 @@
       content.hidden = false;
       if (noteActions) noteActions.hidden = false;
       if (window.speechSynthesis) window.speechSynthesis.getVoices();
-      if (window.STMHighlights) window.STMHighlights.afterNoteLoad(content, filename);
       content.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (e) {
       status.textContent = 'Could not load this file. Use the GitHub Pages URL (not file://).';
       status.classList.add('error');
       console.error(e);
       if (noteActions) noteActions.hidden = true;
-      if (window.STMHighlights) window.STMHighlights.onNoteClosed();
     }
   }
 
@@ -511,4 +504,21 @@
   }
 
   loadFlashcards();
+
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    const THEME_KEY = 'stm-hub-theme';
+    themeToggle.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      const next = cur === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      try {
+        localStorage.setItem(THEME_KEY, next);
+      } catch (e) {
+        /* ignore */
+      }
+      const meta = document.getElementById('theme-color-meta');
+      if (meta) meta.content = next === 'light' ? '#f0f2f6' : '#12161f';
+    });
+  }
 })();

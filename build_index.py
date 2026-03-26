@@ -52,9 +52,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       <button type="button" class="tab" role="tab" id="tab-notes" aria-controls="panel-notes" aria-selected="true">Notes</button>
       <button type="button" class="tab" role="tab" id="tab-cards" aria-controls="panel-cards" aria-selected="false">Flashcards</button>
     </div>
-    <nav class="header-nav" aria-label="Pages">
-      <a href="./highlights.html" class="header-nav-link">My highlights</a>
-    </nav>
   </header>
 
   <section id="panel-notes" class="panel" role="tabpanel" aria-labelledby="tab-notes">
@@ -101,8 +98,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             <p class="tts-key-help">Uses the <a href="https://ai.google.dev/gemini-api/docs/speech-generation" target="_blank" rel="noopener">Gemini TTS</a> API. Create a key in <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio</a>. The key stays in your browser—never uploaded to GitHub.</p>
             <div class="tts-key-row">
               <input type="password" id="tts-api-key" class="tts-api-input" placeholder="AIza…" autocomplete="off" spellcheck="false" />
-              <button type="button" class="hl-btn hl-btn-small" id="tts-save-key">Save</button>
-              <button type="button" class="hl-btn hl-btn-small" id="tts-clear-key">Clear</button>
+              <button type="button" class="tts-btn tts-btn-small" id="tts-save-key">Save</button>
+              <button type="button" class="tts-btn tts-btn-small" id="tts-clear-key">Clear</button>
             </div>
           </details>
           <p class="speak-hint">Gemini mode sounds much more natural; browser mode works offline with no key.</p>
@@ -141,7 +138,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   <script>window.__NOTES__ = __NOTES_JSON__;</script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="./gemini-tts.js"></script>
-  <script src="./highlights.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>
