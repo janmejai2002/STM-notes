@@ -857,3 +857,77 @@ html[data-theme="light"] .hl-item-del:hover {
   color: var(--accent);
   font-weight: 600;
 }
+
+/* Read aloud (Web Speech API) */
+.note-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.85rem;
+}
+
+.speak-btn {
+  flex-shrink: 0;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), border-color var(--transition), transform 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  padding: 0;
+}
+
+.speak-btn:hover {
+  background: var(--accent-soft);
+  border-color: var(--border-strong);
+}
+
+.speak-btn:active {
+  transform: scale(0.96);
+}
+
+.speak-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-ring);
+}
+
+.speak-btn .icon-speak,
+.speak-btn .icon-speak-stop {
+  width: 24px;
+  height: 24px;
+}
+
+.speak-btn .icon-speak-stop {
+  display: none;
+}
+
+.speak-btn.is-speaking {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+html[data-theme="light"] .speak-btn.is-speaking {
+  color: var(--accent-hover);
+}
+
+.speak-btn.is-speaking .icon-speak {
+  display: none;
+}
+
+.speak-btn.is-speaking .icon-speak-stop {
+  display: block;
+}
+
+.speak-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
