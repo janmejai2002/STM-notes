@@ -13,8 +13,33 @@
   const status = document.getElementById('status');
   const noteActions = document.getElementById('note-actions');
   const btnSpeak = document.getElementById('btn-speak');
+  const ttsEngine = document.getElementById('tts-engine');
+  const ttsVoice = document.getElementById('tts-voice');
+  const ttsApiKey = document.getElementById('tts-api-key');
+  const ttsSaveKey = document.getElementById('tts-save-key');
+  const ttsClearKey = document.getElementById('tts-clear-key');
+  const ttsKeyDetails = document.getElementById('tts-key-details');
+
+  const LS_TTS_ENGINE = 'stm-tts-engine';
+  const LS_GEMINI_KEY = 'stm-gemini-tts-key';
+  const LS_GEMINI_VOICE = 'stm-gemini-voice';
 
   const TTS_CHUNK = 24000;
+
+  function setSpeakingUi(on) {
+    if (!btnSpeak) return;
+    if (on) {
+      btnSpeak.classList.add('is-speaking');
+      btnSpeak.setAttribute('aria-pressed', 'true');
+      btnSpeak.setAttribute('aria-label', 'Stop reading');
+      btnSpeak.title = 'Stop reading';
+    } else {
+      btnSpeak.classList.remove('is-speaking');
+      btnSpeak.setAttribute('aria-pressed', 'false');
+      btnSpeak.setAttribute('aria-label', 'Read note aloud');
+      btnSpeak.title = 'Read note aloud';
+    }
+  }
 
   function stopSpeak() {
     try {
@@ -22,13 +47,74 @@
     } catch (e) {
       /* ignore */
     }
-    if (btnSpeak) {
-      btnSpeak.classList.remove('is-speaking');
-      btnSpeak.setAttribute('aria-pressed', 'false');
-      btnSpeak.setAttribute('aria-label', 'Read note aloud');
-      btnSpeak.title = 'Read note aloud';
+    if (window.STMGeminiTTS) window.STMGeminiTTS.stop();
+    setSpeakingUi(false);
+  }
+
+  function loadTtsPrefs() {
+    if (ttsEngine) {
+      const e = localStorage.getItem(LS_TTS_ENGINE);
+      if (e === 'browser' || e === 'gemini') ttsEngine.value = e;
+    }
+    if (ttsVoice) {
+      const v = localStorage.getItem(LS_GEMINI_VOICE);
+      if (v) ttsVoice.value = v;
+    }
+    if (ttsApiKey) {
+      const k = localStorage.getItem(LS_GEMINI_KEY);
+      ttsApiKey.placeholder = k ? '•••••••• (saved)' : 'Paste API key from AI Studio';
     }
   }
+
+  function syncTtsVoiceDisabled() {
+    if (ttsVoice && ttsEngine) ttsVoice.disabled = ttsEngine.value === 'browser';
+  }
+
+  if (ttsEngine) {
+    ttsEngine.addEventListener('change', () => {
+      try {
+        localStorage.setItem(LS_TTS_ENGINE, ttsEngine.value);
+      } catch (e) {
+        /* ignore */
+      }
+      syncTtsVoiceDisabled();
+    });
+  }
+  if (ttsVoice) {
+    ttsVoice.addEventListener('change', () => {
+      try {
+        localStorage.setItem(LS_GEMINI_VOICE, ttsVoice.value);
+      } catch (e) {
+        /* ignore */
+      }
+    });
+  }
+  if (ttsSaveKey && ttsApiKey) {
+    ttsSaveKey.addEventListener('click', () => {
+      const v = ttsApiKey.value.trim();
+      if (!v) return;
+      try {
+        localStorage.setItem(LS_GEMINI_KEY, v);
+      } catch (e) {
+        /* ignore */
+      }
+      ttsApiKey.value = '';
+      ttsApiKey.placeholder = '•••••••• (saved)';
+    });
+  }
+  if (ttsClearKey && ttsApiKey) {
+    ttsClearKey.addEventListener('click', () => {
+      try {
+        localStorage.removeItem(LS_GEMINI_KEY);
+      } catch (e) {
+        /* ignore */
+      }
+      ttsApiKey.value = '';
+      ttsApiKey.placeholder = 'Paste API key from AI Studio';
+    });
+  }
+  loadTtsPrefs();
+  syncTtsVoiceDisabled();
 
   function pickVoice(synth) {
     const voices = synth.getVoices();
@@ -58,11 +144,11 @@
     return parts.filter(Boolean);
   }
 
-  function speakArticle(rootEl) {
+  function speakArticleBrowser(rootEl) {
     const synth = window.speechSynthesis;
     if (!synth) {
       if (status) {
-        status.textContent = 'Read-aloud needs a browser with speech (e.g. Chrome, Edge, Safari).';
+        status.textContent = 'This browser has no speech synthesis. Try Chrome, Edge, or Safari—or use Gemini TTS.';
         status.classList.add('error');
       }
       return;
@@ -73,15 +159,12 @@
     const chunks = chunkText(plain);
     if (!chunks.length || !btnSpeak) return;
 
-    btnSpeak.classList.add('is-speaking');
-    btnSpeak.setAttribute('aria-pressed', 'true');
-    btnSpeak.setAttribute('aria-label', 'Stop reading');
-    btnSpeak.title = 'Stop reading';
+    setSpeakingUi(true);
 
     let utteranceStarted = false;
     const speakNext = (i) => {
       if (i >= chunks.length) {
-        stopSpeak();
+        setSpeakingUi(false);
         return;
       }
       const u = new SpeechSynthesisUtterance(chunks[i]);
@@ -89,7 +172,7 @@
       const voice = pickVoice(synth);
       if (voice) u.voice = voice;
       u.onend = () => speakNext(i + 1);
-      u.onerror = () => stopSpeak();
+      u.onerror = () => setSpeakingUi(false);
       synth.speak(u);
     };
 
@@ -105,14 +188,73 @@
     }
   }
 
+  async function speakArticleGemini(rootEl) {
+    const plain = rootEl.innerText || '';
+    if (!plain.trim() || !btnSpeak) return;
+
+    const key = localStorage.getItem(LS_GEMINI_KEY);
+    if (!key) {
+      if (status) {
+        status.textContent = 'Save a Gemini API key below (free from Google AI Studio), or switch to Browser mode.';
+        status.classList.add('error');
+      }
+      if (ttsKeyDetails) ttsKeyDetails.open = true;
+      return;
+    }
+
+    if (!window.STMGeminiTTS) {
+      if (status) {
+        status.textContent = 'Gemini TTS script failed to load. Check your connection.';
+        status.classList.add('error');
+      }
+      return;
+    }
+
+    stopSpeak();
+    setSpeakingUi(true);
+    if (status) {
+      status.classList.remove('error');
+      status.textContent = 'Preparing Gemini audio…';
+    }
+
+    const voice = (ttsVoice && ttsVoice.value) || 'Kore';
+    let userError = false;
+    try {
+      await window.STMGeminiTTS.speakChunks({
+        text: plain,
+        apiKey: key,
+        voiceName: voice,
+        onProgress: (n, tot) => {
+          if (status) status.textContent = 'Playing Gemini audio (' + n + '/' + tot + ')…';
+        }
+      });
+    } catch (e) {
+      const aborted = e && (e.name === 'AbortError' || /aborted/i.test(String(e.message)));
+      if (!aborted) {
+        userError = true;
+        if (status) {
+          status.textContent = 'Gemini TTS: ' + (e.message || 'Request failed');
+          status.classList.add('error');
+        }
+      }
+    } finally {
+      setSpeakingUi(false);
+      if (status && !userError) status.textContent = '';
+    }
+  }
+
   function toggleSpeak() {
-    const synth = window.speechSynthesis;
-    if (!synth || content.hidden || !content.innerText.trim()) return;
-    if (btnSpeak.classList.contains('is-speaking')) {
+    if (content.hidden || !content.innerText.trim()) return;
+    if (btnSpeak && btnSpeak.classList.contains('is-speaking')) {
       stopSpeak();
       return;
     }
-    speakArticle(content);
+    const engine = (ttsEngine && ttsEngine.value) || 'browser';
+    if (engine === 'gemini') {
+      speakArticleGemini(content);
+    } else {
+      speakArticleBrowser(content);
+    }
   }
 
   if (btnSpeak) {

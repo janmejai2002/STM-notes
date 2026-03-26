@@ -67,13 +67,45 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       <main class="main-content">
         <div id="status" class="status">Select a topic or filter the list.</div>
         <div id="note-actions" class="note-actions" hidden>
-          <button type="button" class="speak-btn" id="btn-speak" title="Read note aloud" aria-label="Read note aloud" aria-pressed="false">
-            <svg class="icon-speak" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-            </svg>
-            <svg class="icon-speak-stop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6 6h12v12H6z"/></svg>
-          </button>
-          <span class="speak-hint">Browser read-aloud (no download)</span>
+          <div class="note-actions-row">
+            <button type="button" class="speak-btn" id="btn-speak" title="Read note aloud" aria-label="Read note aloud" aria-pressed="false">
+              <svg class="icon-speak" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+              <svg class="icon-speak-stop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6 6h12v12H6z"/></svg>
+            </button>
+            <label class="tts-label">Source
+              <select id="tts-engine" class="tts-select" aria-label="Read-aloud source">
+                <option value="browser">Browser (free, basic)</option>
+                <option value="gemini">Gemini TTS (Google AI · expressive)</option>
+              </select>
+            </label>
+            <label class="tts-label">Voice
+              <select id="tts-voice" class="tts-select" aria-label="Gemini voice preset">
+                <option value="Kore">Kore — firm</option>
+                <option value="Puck">Puck — upbeat</option>
+                <option value="Aoede">Aoede — breezy</option>
+                <option value="Sulafat">Sulafat — warm</option>
+                <option value="Sadachbia">Sadachbia — lively</option>
+                <option value="Laomedeia">Laomedeia — upbeat</option>
+                <option value="Enceladus">Enceladus — breathy</option>
+                <option value="Zephyr">Zephyr — bright</option>
+                <option value="Charon">Charon — informative</option>
+                <option value="Achird">Achird — friendly</option>
+                <option value="Vindemiatrix">Vindemiatrix — gentle</option>
+              </select>
+            </label>
+          </div>
+          <details class="tts-key-details" id="tts-key-details">
+            <summary class="tts-key-summary">Gemini API key (stored only on this device)</summary>
+            <p class="tts-key-help">Uses the <a href="https://ai.google.dev/gemini-api/docs/speech-generation" target="_blank" rel="noopener">Gemini TTS</a> API. Create a key in <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio</a>. The key stays in your browser—never uploaded to GitHub.</p>
+            <div class="tts-key-row">
+              <input type="password" id="tts-api-key" class="tts-api-input" placeholder="AIza…" autocomplete="off" spellcheck="false" />
+              <button type="button" class="hl-btn hl-btn-small" id="tts-save-key">Save</button>
+              <button type="button" class="hl-btn hl-btn-small" id="tts-clear-key">Clear</button>
+            </div>
+          </details>
+          <p class="speak-hint">Gemini mode sounds much more natural; browser mode works offline with no key.</p>
         </div>
         <article id="content" class="prose" hidden></article>
       </main>
@@ -108,6 +140,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
   <script>window.__NOTES__ = __NOTES_JSON__;</script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="./gemini-tts.js"></script>
   <script src="./highlights.js"></script>
   <script src="./app.js"></script>
 </body>
